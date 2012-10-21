@@ -1,0 +1,15 @@
+<p>
+	Ver en <a href="/news/{{new.id}}">MetaMagazine</a>
+	<a href="{{new.href}}">Sitio Original</a>
+<p>
+<ol>
+	{% for url in new.url_set.all %}
+		<li>
+			<p><a href="{{url.href}}">{{url.extract|safe}}</a></p>
+			{% if url.video %}<p><b>Video: </b>{{url.video|safe}}</p>{% endif %}
+			{% for img in url.img_set.all %}
+				<img src="{{img.src}}" alt=""/>
+			{% endfor %}
+		</li>
+	{% endfor %}
+</ol>

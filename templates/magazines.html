@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block login %}
+{{login|safe}}
+{% endblock %}
+
+{% block content %}
+	<h1>Lista de revistas disponibles</h1>
+	<ul>
+		{% for magazine in magazines %}
+		<li>
+			<a href="/magazines/{{magazine.user}}">{{magazine.title}}</a> de {{magazine.user}}
+		</li>
+		{% endfor %}
+	</ul>
+{% endblock %}

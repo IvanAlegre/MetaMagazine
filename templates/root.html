@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block login %}
+{{login|safe}}
+{% endblock %}
+
+{% block content %}
+	<h1>Bienvenido a MetaMagazine</h1>
+	<p>Metamagazine es un sitio web hecho en <a href="http://djangoproject.org">Django</a>. Está en en una frase de desarrollo muy poco avanzada, por lo que es muy posible que encuentres errores.</p>
+	<p>El objetivo de MetaMagazine es reunir en un sólo sitio a la gente que sigues en twitter, identi.ca y youtube. Además, extrae información relevante de los sitios web que aparecen en tweets (tanto de twitter como de identica), de forma que no siempre tengas que visitar el sitio web enlazado en un tweet para saber que contiene.</p>
+	<p>Ya sólo queda disfrutarlo. Para ello tienes varias opciones:
+		<ol>
+			<li>Ir a la revista de un usuario, debes ir a /magazines/&lt;user&gt;</li>
+			<li>Ver las revistas disponibles <a href="/magazines">/magazines</a></li>
+			<li>Ver una lista de canales activos <a href="/channels">/channels</a></li>
+			<li>Ver una noticia en concreto /news/&lt;id&gt;</li>
+			{% if user.username %}
+			<li>Y por supuesto, ver <a href="/magazines/{{user}}">tu revista</a>, añadir canales y demás</li>
+			{% endif %}
+		</ol>
+	</p>
+	{% if usuario %}
+		<p>Ahora te mostramos una noticia aleatoria, en concreto, la <a href="/magazines/{{usuario}}">revista de {{usuario}}</a></p>
+	{% endif %}
+	<h2>{{title}}</h2>
+	{% if own %}
+		<a href="/changetitle">Cambiar título</a>
+	{% endif %}
+	{% if usuario %}
+		<p>(by {{usuario}})</p><button onclick="showAll('new')">Mostrar todas las noticias</button>
+	{% endif %}
+
+	{% if own %}
+		{{success|safe}}
+		<form action="/magazines/add" method="post">
+		{% csrf_token %}
+			<p>Añadir canal: <label>Usuario: <input type="text" name="user" /></label>
+			<label for="type">Selecciona el tipo de canal</label>
+				<select id="type" name="type">
+					<option selected label="twitter" value="twitter">Twitter</option>
+					<option label="identica" value="identica">Identi.ca</option>
+					<option label="youtube" value="youtube">Youtube</option>
+				</select>
+			<label>Nº de noticias a extraer (max 10)<input type="text" name="limit" /></label>
+			<input type="submit" value="Añadir" /></p>
+		</form>
+	{% endif %}
+	
+	<ul>
+		{% for channel in channels %}
+		<li>
+			<a href="{{channel.href}}">{{channel.href}}</a> {{channel.last}} {% if own %}<a href="/update/{{channel.id}}">Actualizar</a><a href="/delete/{{channel.id}}">  Eliminar</a>{% endif %}
+			<ul>
+				{% for new in channel.news_set.all reversed %}
+				<li>
+					<p>{{new.text}}</p>
+					<button onclick="showNew({{new.id}})">Mostrar noticia</button>
+					<div class="new" id="new{{new.id}}"></div>
+				</li>
+				{% endfor %}
+			</ul>
+		</li>
+		{% endfor %}
+	</ul>
+{% endblock %}

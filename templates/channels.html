@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block login %}
+{{login|safe}}
+{% endblock %}
+
+{% block content %}
+	<h1>Lista de canales</h1>
+	<ul>
+		{% for channel in channels %}
+		<li>
+			<a href="{{channel.href}}">{{channel.href}}</a> actualizado por última vez {{channel.last}}
+			perteneciente a la revista de {{channel.magazine.user}}
+		</li>
+		{% endfor %}
+	</ul>
+{% endblock %}

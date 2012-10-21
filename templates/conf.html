@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block login %}
+{{login|safe}}
+{% endblock %}
+
+{% block content %}
+	{{success|safe}}
+	<form action="/conf" method="post">
+	{% csrf_token %}
+	<table>
+		<tr><td><label>Nuevo nombre: </td><td><input type="text" name="name" /></label></td></tr>
+		<tr><td><label>Contraseña: </td><td><input type="password" name="pwd" /></label></td></tr>
+		<tr><td><label>Contraseña (de nuevo): </td><td><input type="password" name="pwd2" /></label></td></tr>
+		<tr><td><input type="submit" value="Cambiar datos" /></td></tr>
+	</table>
+	</form>
+{% endblock %}

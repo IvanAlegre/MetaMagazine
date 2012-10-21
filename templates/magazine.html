@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block login %}
+{{login|safe}}
+{% endblock %}
+
+{% block content %}
+	<h1>{{title}}</h1>
+	{% if own %}
+		<a href="/changetitle">Cambiar título</a>
+	{% endif %}
+	{% if usuario %}
+		<p>(by {{usuario}})</p><button onclick="showAll('new')">Mostrar todas las noticias</button>
+	{% endif %}
+	
+	{% if own %}
+		{{success|safe}}
+		<form action="/magazines/add" method="post">
+		{% csrf_token %}
+			<p>Añadir canal: <label>Usuario: <input type="text" name="user" /></label>
+			<label for="type">Selecciona el tipo de canal</label>
+				<select id="type" name="type">
+					<option selected label="twitter" value="twitter">Twitter</option>
+					<option label="identica" value="identica">Identi.ca</option>
+					<option label="youtube" value="youtube">Youtube</option>
+				</select>
+			<label>Nº de noticias a extraer (max 10)<input type="text" name="limit" /></label>
+			<input type="submit" value="Añadir" /></p>
+		</form>
+	{% endif %}
+	
+	<ul>
+		{% for channel in channels %}
+		<li>
+			<a href="{{channel.href}}">{{channel.href}}</a> {{channel.last}} {% if own %}<a href="/update/{{channel.id}}">Actualizar</a><a href="/delete/{{channel.id}}">  Eliminar</a>{% endif %}
+			<ul>
+				{% for new in channel.news_set.all reversed %}
+				<li>
+					<p>{{new.text}}</p>
+					<button onclick="showNew({{new.id}})">Mostrar noticia</button>
+					<div class="new" id="new{{new.id}}"></div>
+				</li>
+				{% endfor %}
+			</ul>
+		</li>
+		{% endfor %}
+	</ul>
+{% endblock %}

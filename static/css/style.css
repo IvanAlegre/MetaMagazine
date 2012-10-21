@@ -1,0 +1,17 @@
+body{
+    font-family:"Lucida Bright","Segoe UI",Calibri,"Myriad Pro",Myriad,"Trebuchet MS",Helvetica,Arial,sans-serif;
+    font-size: 13px;
+    color:#333;
+}
+
+div.footer{
+    text-align: center;
+}
+
+.topbar{
+    width: 100%;
+}
+
+.menu{
+    text-align: right;
+}

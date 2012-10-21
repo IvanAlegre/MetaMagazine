@@ -1,0 +1,47 @@
+Nombre de la asignatura:
+   Servicios y Aplicaciones Telemáticas
+
+Nombre completo del alumno:
+   Julio Iván Alegre Torrejón
+
+Nombre de la cuenta en el laboratorio:
+   ivalegre
+
+Nombres y contraseñas de los usuarios:
+      nombre (password)
+   1. felipe (felipe)
+   2. ivan (ivan)
+   3. sara (sara)
+
+Canales:
+   1. Para felipe: 
+      - Twitter de ivalegre (https://twitter.com/statuses/user_timeline/ivalegre.rss)
+      - Youtube de jesus (http://gdata.youtube.com/feeds/api/videos?max-results=5&alt=rss&author=jesus)
+      - Twitter de EspeonzaAguirre (https://twitter.com/statuses/user_timeline/espeonzaaguirre.rss)
+
+   2. Para sara:
+      - Twitter de yonkiblog (https://twitter.com/statuses/user_timeline/yonkiblog.rss)
+      - Youtube de afcorn (http://gdata.youtube.com/feeds/api/videos?max-results=5&alt=rss&author=afcorn)
+
+   3. Para ivan:
+      - Twitter de jgbarah (https://twitter.com/statuses/user_timeline/jgbarah.rss)
+      - Identica de jgbarah (http://identi.ca/jgbarah/rss)
+      - Youtube de user (http://gdata.youtube.com/feeds/api/videos?max-results=5&alt=rss&author=user)
+      - Youtube de ivalegre (http://gdata.youtube.com/feeds/api/videos?max-results=5&alt=rss&author=ivalegre)
+      - Twitter de yonkiblog (https://twitter.com/statuses/user_timeline/yonkiblog.rss)
+
+Resumen de la parte obligatoria:
+   He estado muy ajustado de tiempo, pero creo que ha merecido la pena. He tenido muchos problemas con el AJAX asíncrono múltiple. Podía hacer AJAX asíncrono con sólo una petición, pero cuando se trataba de "mostrar todo" no conseguí hacerlo funcionar. Al final se quedó asíncrona la parte "Mostrar noticia" y síncrona para la "Mostrar todas las noticias".
+
+   Tuve varios problemas con el csrf, ya que o bien tenía que borrar cookies, o no cargaba bien el formulario de nuevo (al usar atrás del navegador, en vez de volver a la url).
+
+   Me gustaría haber creado una interfaz mucho más vistosa y haber utilizado jQuery para algún efecto visual. Además, el CSS es demasiado básico, pero de nuevo me doy cuenta de que estudiar y trabajar quizás sea demasiado. No he tenido tiempo (y no porqué no hayáis dejado margen).
+
+   Por otro lado, mucho mejor el uso de Django frente a otros Frameworks como Ruby on Rails, porqué teníamos muchos más conocimientos de Python que de Ruby. Además, Django tiene mas previsión de futuro.
+
+Opcional:
+   Únicamente he hecho la configuración. Cambio de nombre y contraseña, se diferencian casos. Por ejemplo, puedo cambiar, sólo nombre, sólo contraseña, o ambas. Todos los casos están recogidos.
+
+Url vídeo parte básica y opcional
+Los enviar� por correo en cuanto se terminen de subir
+

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block login %}
+{{login|safe}}
+{% endblock %}
+
+{% block content %}
+	{{success|safe}}
+	<form action="/changetitle" method="post">
+	{% csrf_token %}
+		<p><label>Nuevo título: <input type="text" name="title" /></label>
+		<input type="submit" value="Cambiar" /></p>
+	</form>
+{% endblock %}
